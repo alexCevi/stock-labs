@@ -34,7 +34,7 @@ export class DailychartComponent implements OnInit {
 
   ngOnInit() {
     this.http.
-      get('https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=AAPL&interval=1min&apikey=P20DES6V7R7AOXED')
+      get('https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=AAPL&apikey=P20DES6V7R7AOXED')
       .pipe(map(responseData => {
 
         const newArray = [];
