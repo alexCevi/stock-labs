@@ -1,22 +1,45 @@
-<div class="stockInfoContainer">
-  <div class="innerInfoItem" id="stockDataOne">
-    <h1>{{ stockOneSymbol }}</h1>
-    <h1>{{ stockOnePrice }}</h1>
+<div class="componentWrapper">
+  <div class="stockInfoContainer">
+    <div class="innerInfoItem" id="stockDataOne">
+      <h4>
+        Symbol:
+        <span class="infoData" id="stockSymbol">{{ stockOneSymbol }}</span>
+      </h4>
+      <h4>
+        Current Price:
+        <span class="infoData" id="priceColor">${{ stockOnePrice }}</span>
+      </h4>
+      <h4>
+        Volume:
+        <span class="infoData" id="stockVolume">{{ stockOneVolume }}</span>
+      </h4>
+    </div>
+    <div class="innerInfoItem" id="stockDataTwo">
+      <h4>
+        Symbol:
+        <span class="infoData" id="stockSymbol">{{ stockTwoSymbol }}</span>
+      </h4>
+      <h4>
+        Current Price:
+        <span class="infoData" id="priceColor">${{ stockTwoPrice }}</span>
+      </h4>
+      <h4>
+        Volume:
+        <span class="infoData" id="stockVolume">{{ stockTwoVolume }}</span>
+      </h4>
+    </div>
   </div>
-  <div class="innerInfoItem" id="stockDataTwo">
-    <h1>{{ stockTwoSymbol }}</h1>
-    <h1>{{ stockTwoPrice }}</h1>
+  <div>
+    <h4 id="toggleTitle">Click To Toggle Chart</h4>
+    <canvas
+      baseChart
+      [chartType]="'line'"
+      [datasets]="chartData"
+      [labels]="chartLabels"
+      [options]="chartOptions"
+      [legend]="true"
+      (chartClick)="onChartClick($event)"
+    >
+    </canvas>
   </div>
-</div>
-<div>
-  <canvas
-    baseChart
-    [chartType]="'line'"
-    [datasets]="chartData"
-    [labels]="chartLabels"
-    [options]="chartOptions"
-    [legend]="true"
-    (chartClick)="onChartClick($event)"
-  >
-  </canvas>
 </div>

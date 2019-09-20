@@ -19,13 +19,15 @@ export class IntradaychartComponent implements OnInit {
   stockOnePrice: string;
   stockTwoSymbol: string;
   stockTwoPrice: string;
+  stockOneVolume: string;
+  stockTwoVolume: string;
 
   chartOptions = {
     responsive: true,
     scales: {
       xAxes: [{
         ticks: {
-          maxTicksLimit: 30
+          maxTicksLimit: 50
         }
       }]
     }
@@ -65,11 +67,14 @@ export class IntradaychartComponent implements OnInit {
           this.firstStockData.push(entries[i][1][dataType]);
           this.chartDates.push(entries[i][0]);
         }
+        this.stockOnePrice = this.firstStockData[0];
         this.firstStockData.reverse();
         this.chartDates.reverse();
 
         this.stockOneSymbol = res[0]['2. Symbol'];
-        this.stockOnePrice = this.firstStockData[0];
+
+        this.stockOneVolume = entries[0][1]['5. volume'];
+
 
       });
 
@@ -85,15 +90,15 @@ export class IntradaychartComponent implements OnInit {
       }))
       .subscribe(res => {
 
-
         const entries = Object.entries(res[1]);
 
         for (let i = 0; i < entries.length; i++) {
           this.secondStockData.push(entries[i][1][dataType]);
         }
+        this.stockTwoPrice = this.secondStockData[0];
         this.secondStockData.reverse();
         this.stockTwoSymbol = res[0]['2. Symbol'];
-        this.stockTwoPrice = this.secondStockData[0];
+        this.stockTwoVolume = entries[0][1]['5. volume'];
       });
   }
 }
