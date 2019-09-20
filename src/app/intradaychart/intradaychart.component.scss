@@ -1,0 +1,22 @@
+@import "./src/app/scss/main";
+
+.stockInfoContainer {
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  margin: 0 15%;
+  color: white;
+
+  #stockDataOne {
+    border: solid 1px #ff6384;
+  }
+  #stockDataTwo {
+    border: solid 1px #36a2eb;
+  }
+
+  .innerInfoItem {
+    margin: 10px 10px;
+    padding: 10px 10px;
+    width: 100%;
+  }
+}

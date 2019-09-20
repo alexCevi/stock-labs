@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpUtilitiesService } from '../services/_httpUtil/http-utilities.service';
 import { map } from 'rxjs/operators';
+
 
 @Component({
   selector: 'app-intradaychart',
@@ -10,19 +11,29 @@ import { map } from 'rxjs/operators';
 export class IntradaychartComponent implements OnInit {
 
   chartDates = [];
-  chartDataCustom = [];
+  firstStockData = [];
+  secondStockData = [];
   chartHasLoaded = false;
   dataType: string;
-
+  stockOneSymbol: string;
+  stockOnePrice: string;
+  stockTwoSymbol: string;
+  stockTwoPrice: string;
 
   chartOptions = {
     responsive: true,
-
+    scales: {
+      xAxes: [{
+        ticks: {
+          maxTicksLimit: 30
+        }
+      }]
+    }
   };
 
   chartData = [
-    { data: this.chartDataCustom, label: 'Account A', fill: false },
-
+    { data: this.firstStockData, label: 'Account A', fill: false },
+    { data: this.secondStockData, label: 'Account B', fill: false }
   ];
 
   chartLabels = this.chartDates;
@@ -31,12 +42,13 @@ export class IntradaychartComponent implements OnInit {
     console.log(event);
   }
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpUtilitiesService) { }
 
   ngOnInit() {
-    this.http.get('https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=AAPL&interval=1min&apikey=P20DES6V7R7AOXED')
-      .pipe(map(responseData => {
+    let dataType = '4. close';
 
+    this.http.getStockOneData('MU')
+      .pipe(map(responseData => {
         const newArray = [];
         for (const key in responseData) {
           if (responseData.hasOwnProperty(key)) {
@@ -46,21 +58,42 @@ export class IntradaychartComponent implements OnInit {
         return newArray;
       }))
       .subscribe(res => {
+
         const entries = Object.entries(res[1]);
 
         for (let i = 0; i < entries.length; i++) {
-          this.dataType = '4. close';
-          this.chartDataCustom.push(entries[i][1][this.dataType]);
+          this.firstStockData.push(entries[i][1][dataType]);
           this.chartDates.push(entries[i][0]);
         }
-        this.chartDataCustom.reverse();
+        this.firstStockData.reverse();
         this.chartDates.reverse();
 
+        this.stockOneSymbol = res[0]['2. Symbol'];
+        this.stockOnePrice = this.firstStockData[0];
+
+      });
+
+    this.http.getStockTwoData('CSCO')
+      .pipe(map(responseData => {
+        const newArray = [];
+        for (const key in responseData) {
+          if (responseData.hasOwnProperty(key)) {
+            newArray.push({ ...responseData[key] });
+          }
+        }
+        return newArray;
+      }))
+      .subscribe(res => {
+
+
+        const entries = Object.entries(res[1]);
+
+        for (let i = 0; i < entries.length; i++) {
+          this.secondStockData.push(entries[i][1][dataType]);
+        }
+        this.secondStockData.reverse();
+        this.stockTwoSymbol = res[0]['2. Symbol'];
+        this.stockTwoPrice = this.secondStockData[0];
       });
   }
-
-
 }
-
-
-

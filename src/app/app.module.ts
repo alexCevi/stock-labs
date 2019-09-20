@@ -8,21 +8,14 @@ import { AppComponent } from './app.component';
 import { StockviewComponent } from './stockview/stockview.component';
 import { IntradaychartComponent } from './intradaychart/intradaychart.component';
 import { HttpClientModule } from '@angular/common/http';
-import { SummaryboxcontainerComponent } from './summaryboxcontainer/summaryboxcontainer.component';
-import { DailychartComponent } from './dailychart/dailychart.component';
-import { WeeklychartComponent } from './weeklychart/weeklychart.component';
-import { MonthlychartComponent } from './monthlychart/monthlychart.component';
+
 
 
 @NgModule({
   declarations: [
     AppComponent,
     StockviewComponent,
-    IntradaychartComponent,
-    SummaryboxcontainerComponent,
-    DailychartComponent,
-    WeeklychartComponent,
-    MonthlychartComponent
+    IntradaychartComponent
   ],
   imports: [
     BrowserModule,

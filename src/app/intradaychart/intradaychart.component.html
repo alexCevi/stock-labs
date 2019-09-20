@@ -1,4 +1,14 @@
-<div style="width: 100%;">
+<div class="stockInfoContainer">
+  <div class="innerInfoItem" id="stockDataOne">
+    <h1>{{ stockOneSymbol }}</h1>
+    <h1>{{ stockOnePrice }}</h1>
+  </div>
+  <div class="innerInfoItem" id="stockDataTwo">
+    <h1>{{ stockTwoSymbol }}</h1>
+    <h1>{{ stockTwoPrice }}</h1>
+  </div>
+</div>
+<div>
   <canvas
     baseChart
     [chartType]="'line'"
