@@ -1,32 +1,59 @@
 <div class="componentWrapper">
   <div class="stockInfoContainer">
     <div class="innerInfoItem" id="stockDataOne">
-      <h4>
-        Symbol:
-        <span class="infoData" id="stockSymbol">{{ stockOneSymbol }}</span>
-      </h4>
-      <h4>
-        Current Price:
-        <span class="infoData" id="priceColor">${{ stockOnePrice }}</span>
-      </h4>
-      <h4>
-        Volume:
-        <span class="infoData" id="stockVolume">{{ stockOneVolume }}</span>
-      </h4>
+      <div class="leftData">
+        <h4>
+          Symbol:
+          <span class="infoData" id="stockSymbol">{{ stockOneSymbol }}</span>
+        </h4>
+        <h4>
+          Current Price:
+          <span class="infoData" id="priceColor">${{ stockOnePrice }}</span>
+        </h4>
+        <h4>
+          Volume:
+          <span class="infoData" id="stockVolume">{{ stockOneVolume }}</span>
+        </h4>
+      </div>
+      <div>
+        <canvas
+          baseChart
+          [chartType]="'bar'"
+          [datasets]="chartData"
+          [labels]="chartLabels"
+          [options]="chartOptions"
+          (chartClick)="onChartClick($event)"
+        >
+        </canvas>
+      </div>
     </div>
     <div class="innerInfoItem" id="stockDataTwo">
-      <h4>
-        Symbol:
-        <span class="infoData" id="stockSymbol">{{ stockTwoSymbol }}</span>
-      </h4>
-      <h4>
-        Current Price:
-        <span class="infoData" id="priceColor">${{ stockTwoPrice }}</span>
-      </h4>
-      <h4>
-        Volume:
-        <span class="infoData" id="stockVolume">{{ stockTwoVolume }}</span>
-      </h4>
+      <div class="leftData">
+        <h4>
+          Symbol:
+          <span class="infoData" id="stockSymbol">{{ stockTwoSymbol }}</span>
+        </h4>
+        <h4>
+          Current Price:
+          <span class="infoData" id="priceColor">${{ stockTwoPrice }}</span>
+        </h4>
+        <h4>
+          Volume:
+          <span class="infoData" id="stockVolume">{{ stockTwoVolume }}</span>
+        </h4>
+      </div>
+      <div>
+        <canvas
+          baseChart
+          [chartType]="'bar'"
+          [datasets]="chartData"
+          [labels]="chartLabels"
+          [options]="chartOptions"
+          [legend]="true"
+          (chartClick)="onChartClick($event)"
+        >
+        </canvas>
+      </div>
     </div>
   </div>
   <div>

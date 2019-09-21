@@ -34,5 +34,14 @@
   margin: 0;
 }
 .componentWrapper {
-  box-shadow: 0 8px 16px 0 #ffffff1c;
+  box-shadow: 0 8px 16px 0 #0000007a;
+  margin-bottom: 5%;
+}
+
+#dataTitle {
+  font-size: 55px;
+  color: white;
+  text-align: center;
+  padding: 20px 20px;
+  font-weight: 400;
 }
