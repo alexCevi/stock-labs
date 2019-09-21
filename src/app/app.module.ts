@@ -8,6 +8,7 @@ import { AppComponent } from './app.component';
 import { StockviewComponent } from './stockview/stockview.component';
 import { IntradaychartComponent } from './intradaychart/intradaychart.component';
 import { HttpClientModule } from '@angular/common/http';
+import { NavComponent } from './nav/nav.component';
 
 
 
@@ -15,7 +16,8 @@ import { HttpClientModule } from '@angular/common/http';
   declarations: [
     AppComponent,
     StockviewComponent,
-    IntradaychartComponent
+    IntradaychartComponent,
+    NavComponent
   ],
   imports: [
     BrowserModule,

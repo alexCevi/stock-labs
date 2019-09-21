@@ -1,14 +1,51 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="utf-8">
-  <title>Stocklabs</title>
-  <base href="/">
+  <head>
+    <meta charset="utf-8" />
+    <title>Stocklabs</title>
+    <base href="/" />
 
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" type="image/x-icon" href="favicon.ico">
-</head>
-<body>
-  <app-root></app-root>
-</body>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/x-icon" href="favicon.ico" />
+  </head>
+  <body>
+    <div class="tradingview-widget-container">
+      <div class="tradingview-widget-container__widget"></div>
+      <script
+        type="text/javascript"
+        src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js"
+        async
+      >
+          {
+          "symbols": [
+            {
+              "title": "S&P 500",
+              "proName": "OANDA:SPX500USD"
+            },
+            {
+              "title": "Nasdaq 100",
+              "proName": "OANDA:NAS100USD"
+            },
+            {
+              "title": "EUR/USD",
+              "proName": "FX_IDC:EURUSD"
+            },
+            {
+              "title": "BTC/USD",
+              "proName": "BITSTAMP:BTCUSD"
+            },
+            {
+              "title": "ETH/USD",
+              "proName": "BITSTAMP:ETHUSD"
+            }
+          ],
+          "colorTheme": "dark",
+          "isTransparent": false,
+          "displayMode": "adaptive",
+          "locale": "en"
+        }
+      </script>
+    </div>
+    <app-root></app-root>
+  </body>
 </html>

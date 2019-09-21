@@ -34,8 +34,8 @@ export class IntradaychartComponent implements OnInit {
   };
 
   chartData = [
-    { data: this.firstStockData, label: 'Account A', fill: false },
-    { data: this.secondStockData, label: 'Account B', fill: false }
+    { data: this.firstStockData, label: 'Stock One', fill: false },
+    { data: this.secondStockData, label: 'Stock Two', fill: false }
   ];
 
   chartLabels = this.chartDates;
