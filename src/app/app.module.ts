@@ -9,6 +9,8 @@ import { StockviewComponent } from './stockview/stockview.component';
 import { IntradaychartComponent } from './intradaychart/intradaychart.component';
 import { HttpClientModule } from '@angular/common/http';
 import { NavComponent } from './nav/nav.component';
+import { HomeviewComponent } from './homeview/homeview.component';
+import { StockinputComponent } from './stockinput/stockinput.component';
 
 
 
@@ -17,7 +19,9 @@ import { NavComponent } from './nav/nav.component';
     AppComponent,
     StockviewComponent,
     IntradaychartComponent,
-    NavComponent
+    NavComponent,
+    HomeviewComponent,
+    StockinputComponent
   ],
   imports: [
     BrowserModule,
