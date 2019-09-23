@@ -15,7 +15,6 @@ export class StockOneService {
 
   constructor(private http: HttpUtilitiesService) { }
   getData(symbol: string) {
-    this.data = [];
     this.http.getStockOneData(symbol).pipe(map(responseData => {
       const newArray = [];
       for (const key in responseData) {
@@ -36,7 +35,6 @@ export class StockOneService {
         this.price = this.data[0];
         this.data.reverse();
         this.dates.reverse();
-        console.log(this.data);
 
         this.symbol = res[0]['2. Symbol'];
 
@@ -54,7 +52,7 @@ export class StockOneService {
       return newArray;
     }))
       .subscribe(res => {
-
+        this.data = [];
         const entries = Object.entries(res[1]);
 
         for (let i = 0; i < entries.length; i++) {

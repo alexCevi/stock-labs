@@ -6,9 +6,6 @@ import { HttpClient } from '@angular/common/http';
 })
 export class HttpUtilitiesService {
 
-
-  chartDates = [];
-
   constructor(private http: HttpClient) { }
   readonly apiUrl = 'https://www.alphavantage.co/query?function=';
   readonly apiKey = 'P20DES6V7R7AOXED';

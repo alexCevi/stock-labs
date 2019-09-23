@@ -35,7 +35,10 @@ export class IntradaychartComponent implements OnInit {
     console.log(this.stockTwo.data);
   }
 
-  constructor(private stockOne: StockOneService, private stockTwo: StockTwoService) { }
+  constructor(
+    private stockOne: StockOneService,
+    private stockTwo: StockTwoService,
+  ) { }
 
   ngOnInit() {
     this.stockOne.getDemo();
