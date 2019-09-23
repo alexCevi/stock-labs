@@ -1,15 +1,80 @@
 @import "./src/app/scss/main";
-
+.componentWrapper {
+  margin: 5% 0%;
+}
 .titleContainer {
+  color: white;
   h1 {
     text-align: center;
+    font-size: 75px;
+    margin-bottom: 1%;
   }
   p {
     text-align: center;
+    font-size: 25px;
+    margin-bottom: 2%;
+    margin-top: 0;
   }
 }
 .inputContainer {
   display: flex;
   flex-direction: row;
   justify-content: center;
+  width: 100%;
+
+  input {
+    margin: 1%;
+    border: 1px solid $mainGreen;
+    background-color: $secondaryGrey;
+    padding: 20px 20px;
+    width: 30%;
+    border-radius: 25px;
+    color: white;
+    font-size: 20px;
+  }
+  input:focus {
+    border: 1px solid white;
+  }
+  select {
+    background-color: $secondaryGrey;
+    color: white;
+    width: 10%;
+  }
+}
+#submitData {
+  display: block;
+  width: 40%;
+  margin: 1%;
+  color: white;
+  margin-top: 1%;
+  background-color: transparent;
+  border: 1px solid $mainGreen;
+  font-size: 20px;
+  padding: 10px;
+  border-radius: 25px;
+}
+#submitData:hover {
+  transform: scale(1.1);
+  transition: 200ms;
+  cursor: pointer;
+}
+.buttonWrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+#selectData {
+  display: block;
+  width: 20%;
+  margin: 1%;
+  color: white;
+  margin-top: 1%;
+  background-color: $secondaryGrey;
+  border: 1px solid $mainGreen;
+  font-size: 20px;
+  padding: 10px;
+  border-radius: 25px;
+}
+#selectData option {
+  background-color: $secondaryGrey;
 }

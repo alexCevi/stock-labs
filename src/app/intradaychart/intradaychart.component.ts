@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpUtilitiesService } from '../services/_httpUtil/http-utilities.service';
-import { map } from 'rxjs/operators';
+import { StockOneService } from '../services/_stockData/stock-one.service';
+import { StockTwoService } from '../services/_stockData/stock-two.service';
 
 
 @Component({
@@ -10,17 +10,7 @@ import { map } from 'rxjs/operators';
 })
 export class IntradaychartComponent implements OnInit {
 
-  chartDates = [];
-  firstStockData = [];
-  secondStockData = [];
-  chartHasLoaded = false;
-  dataType: string;
-  stockOneSymbol: string;
-  stockOnePrice: string;
-  stockTwoSymbol: string;
-  stockTwoPrice: string;
-  stockOneVolume: string;
-  stockTwoVolume: string;
+  overview = '(demo)';
 
   chartOptions = {
     responsive: true,
@@ -34,71 +24,21 @@ export class IntradaychartComponent implements OnInit {
   };
 
   chartData = [
-    { data: this.firstStockData, label: 'Stock One', fill: false },
-    { data: this.secondStockData, label: 'Stock Two', fill: false }
+    { data: this.stockOne.data, label: 'Stock One', fill: false },
+    { data: this.stockTwo.data, label: 'Stock Two', fill: false }
   ];
 
-  chartLabels = this.chartDates;
+  chartLabels = this.stockOne.dates;
 
   onChartClick(event) {
-    console.log(event);
+    console.log(this.stockOne.data);
+    console.log(this.stockTwo.data);
   }
 
-  constructor(private http: HttpUtilitiesService) { }
+  constructor(private stockOne: StockOneService, private stockTwo: StockTwoService) { }
 
   ngOnInit() {
-    let dataType = '4. close';
-
-    this.http.getStockOneData('MU')
-      .pipe(map(responseData => {
-        const newArray = [];
-        for (const key in responseData) {
-          if (responseData.hasOwnProperty(key)) {
-            newArray.push({ ...responseData[key] });
-          }
-        }
-        return newArray;
-      }))
-      .subscribe(res => {
-
-        const entries = Object.entries(res[1]);
-
-        for (let i = 0; i < entries.length; i++) {
-          this.firstStockData.push(entries[i][1][dataType]);
-          this.chartDates.push(entries[i][0]);
-        }
-        this.stockOnePrice = this.firstStockData[0];
-        this.firstStockData.reverse();
-        this.chartDates.reverse();
-
-        this.stockOneSymbol = res[0]['2. Symbol'];
-
-        this.stockOneVolume = entries[0][1]['5. volume'];
-
-
-      });
-
-    this.http.getStockTwoData('CSCO')
-      .pipe(map(responseData => {
-        const newArray = [];
-        for (const key in responseData) {
-          if (responseData.hasOwnProperty(key)) {
-            newArray.push({ ...responseData[key] });
-          }
-        }
-        return newArray;
-      }))
-      .subscribe(res => {
-
-        const entries = Object.entries(res[1]);
-
-        for (let i = 0; i < entries.length; i++) {
-          this.secondStockData.push(entries[i][1][dataType]);
-        }
-        this.stockTwoPrice = this.secondStockData[0];
-        this.secondStockData.reverse();
-        this.stockTwoSymbol = res[0]['2. Symbol'];
-        this.stockTwoVolume = entries[0][1]['5. volume'];
-      });
+    this.stockOne.getDemo();
+    this.stockTwo.getDemo();
   }
 }

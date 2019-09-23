@@ -1,19 +1,27 @@
 <div class="componentWrapper">
-  <h2 id="dataTitle">Data Overview</h2>
+  <h2 id="dataTitle">
+    Data Overview <span>{{ this.overview }}</span>
+  </h2>
   <div class="stockInfoContainer">
     <div class="innerInfoItem" id="stockDataOne">
       <div class="leftData">
         <h4>
           Symbol:
-          <span class="infoData" id="stockSymbol">{{ stockOneSymbol }}</span>
+          <span class="infoData" id="stockSymbol">{{
+            this.stockOne.symbol
+          }}</span>
         </h4>
         <h4>
           Current Price:
-          <span class="infoData" id="priceColor">${{ stockOnePrice }}</span>
+          <span class="infoData" id="priceColor"
+            >${{ this.stockOne.price }}</span
+          >
         </h4>
         <h4>
           Volume:
-          <span class="infoData" id="stockVolume">{{ stockOneVolume }}</span>
+          <span class="infoData" id="stockVolume">{{
+            this.stockOne.volume
+          }}</span>
         </h4>
       </div>
       <div>
@@ -32,15 +40,21 @@
       <div class="leftData">
         <h4>
           Symbol:
-          <span class="infoData" id="stockSymbol">{{ stockTwoSymbol }}</span>
+          <span class="infoData" id="stockSymbol">{{
+            this.stockTwo.symbol
+          }}</span>
         </h4>
         <h4>
           Current Price:
-          <span class="infoData" id="priceColor">${{ stockTwoPrice }}</span>
+          <span class="infoData" id="priceColor"
+            >${{ this.stockTwo.price }}</span
+          >
         </h4>
         <h4>
           Volume:
-          <span class="infoData" id="stockVolume">{{ stockTwoVolume }}</span>
+          <span class="infoData" id="stockVolume">{{
+            this.stockTwo.volume
+          }}</span>
         </h4>
       </div>
       <div>
